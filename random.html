@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Name Picker</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <!-- 
+        
+        Created by: Simon Gerard Granil
+        Gordon College - College of Computer Studies
+        February 13, 2021
+    
+    -->
+
+    <div class="container p-5">
+
+        <h3>Random Name Picker with Bootstrap | Javascript DOM</h3>
+
+        <hr>
+    
+        <div class="row">
+            <div class="col-lg-6">
+                <input class="form-control" type="text" id="inputName" placeholder="Enter Name">
+            </div>
+            <div class="col-lg-6">
+                <button class="btn btn-primary" onclick="deleteName()">Delete Names</button>
+            </div>
+        </div>
+
+        <table class="table">
+            <tbody>
+                <th>List of Names</th>
+                <tr id="name"></tr>
+            </tbody>
+        </table>
+
+        <div class="row-lg-6 mt-2">  
+            <button class="btn btn-success" id="chooseName" onclick="chooseName()">Pick Random Names</button>
+        </div>
+        <div class="row-lg-6 mt-2"> 
+            <button class="btn btn-danger" onclick="resetName()">Reset Names</button>
+        </div>
+        <div class="row-lg-6 mt-2">
+            <div class="container p-2">
+                <p id="selected"></p>
+            </div>
+        </div> 
+    </div>
+
+    <script>
+
+        var names = [];
+        var chooseButton = document.getElementById('chooseName');
+        let input = document.querySelector('#inputName');  
+
+        input.addEventListener('keyup', (e) => {
+            if (e.keyCode === 13) {
+                let inputName = document.getElementById('inputName').value;
+
+                names.push(inputName);
+
+                var nval = "";
+
+                for (i = 0; i < names.length; i++) {
+                    nval += names[i] + "<br>";
+                }
+
+                document.getElementById('name').innerHTML = nval;
+                document.getElementById('inputName').value = "";
+        }});
+
+        function chooseName() {
+            let randomNumber = Math.floor(Math.random() * names.length);
+            let randomName = names[randomNumber];
+
+            document.getElementById('selected').innerHTML = "Congrat <b>" + randomName + "</b>, you are the winner!";
+
+            var removeName = names.indexOf(randomName);
+            names.splice(removeName, 1);
+
+            let updateName = "";
+
+            for (i = 0; i < names.length; i++) {
+                updateName += names[i] + "<br>";
+            }
+
+            document.getElementById('name').innerHTML = updateName;
+        }
+
+        function resetName() {
+            document.getElementById('selected').innerHTML = "";
+        }
+
+        function deleteName() {
+            names = [];
+            document.getElementById('name').innerHTML = "";
+        }
+
+    </script>
+
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>

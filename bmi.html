@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>BMI Calculator</title>
+    </head>
+
+    <body>
+
+      <!-- 
+        
+        Created by: Simon Gerard Granil
+        Gordon College - College of Computer Studies
+        February 13, 2021
+    
+      -->
+
+      <h3>BMI Calculator | Javascript DOM</h3>
+
+      <hr>
+
+      <input type="text" id="firstNum" placeholder="Enter Weight (kg)">
+      <input type="text" id="secNum" placeholder="Enter Height (m)"> = 
+      <input type="text" id="sum" disabled="true" placeholder="BMI">
+
+      <button onclick="demoJS()">Calculate</button>
+
+      <p id="demo"></p>
+              
+      <script>
+
+        function demoJS() {
+
+          let first = Number(document.querySelector("#firstNum").value);
+          let sec = Number(document.querySelector("#secNum").value);
+          let sqrt = Math.pow(sec, 2);
+          let bmi = first / sqrt;
+          var messages;
+
+          document.getElementById("sum").value = bmi;
+
+          if (bmi < 18) {
+            messages = "You are underweight";
+          } else if (bmi > 18 && bmi < 25) {
+            messages = "You are normal";
+          } else if (bmi > 25 && bmi < 30) {
+            messages = "You are overweight";
+          } else if (bmi > 30 && bmi < 39) {
+            messages = "You are obese";
+          } else if (bmi > 39) {
+            messages = "Need some workout";
+          } else {
+            messages = "Invalid";
+          }
+
+          document.getElementById("demo").innerHTML = messages;
+
+        }
+
+      </script>
+
+    </body>
+</html>
