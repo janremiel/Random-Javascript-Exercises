@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+</head>
+
+    <style>
+
+        .main {
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+
+        .obstacle {
+            background-color: cadetblue;
+            width: 100px;
+            height: 500px;
+            position: absolute;
+            left: 1000px;
+            top: 100px;
+            z-index: -1;
+        }
+
+    </style>
+
+<body>
+
+    <p>Use the arrow keys to move the image.</p>
+
+    <img class="main" id="main" src="img/profile.jpg" width="100px">
+
+    <div class="obstacle"></div>
+
+    <script>
+
+        document.onkeydown = checkKey;
+
+        var x = 100; // coordinates
+        var y = 100; // coordinates
+
+        function checkKey(e) { // check if a key was pressed
+            e = e || window.event;
+
+            switch (e.keyCode) {
+                case 37: // left
+                    x -= 10; // coordinate reduce by 10
+                break;
+                case 39: // right
+                    x += 10; // coordinate increase by 10
+                break;
+                case 38: // up
+                    y -= 10;
+                break;
+                case 40: // down
+                    y += 10;
+                break;
+            }
+
+            document.getElementById('main').style.left = x + "px";
+            document.getElementById('main').style.top = y + "px";
+        }
+
+    </script>
+    
+</body>
+</html>

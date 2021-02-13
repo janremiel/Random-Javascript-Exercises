@@ -33,13 +33,13 @@
 
         function demoJS() {
 
-          let first = Number(document.querySelector("#firstNum").value);
-          let sec = Number(document.querySelector("#secNum").value);
-          let sqrt = Math.pow(sec, 2);
-          let bmi = first / sqrt;
-          var messages;
+          let first = Number(document.querySelector("#firstNum").value); // first value that we inserted
+          let sec = Number(document.querySelector("#secNum").value); // second value that we inserted
+          let sqrt = Math.pow(sec, 2); // formula of meter which multiply twice
+          let bmi = first / sqrt; // formula of BMI
+          var messages; // empty message
 
-          document.getElementById("sum").value = bmi;
+          document.getElementById("sum").value = bmi; // prints the value of BMI
 
           if (bmi < 18) {
             messages = "You are underweight";
@@ -55,7 +55,7 @@
             messages = "Invalid";
           }
 
-          document.getElementById("demo").innerHTML = messages;
+          document.getElementById("demo").innerHTML = messages; // prints the message depends on the value of BMI
 
         }
 

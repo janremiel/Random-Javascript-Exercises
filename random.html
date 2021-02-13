@@ -56,41 +56,57 @@
     <script>
 
         var names = [];
-        var chooseButton = document.getElementById('chooseName');
-        let input = document.querySelector('#inputName');  
+        var chooseButton = document.getElementById('chooseName'); 
+        let input = document.querySelector('#inputName');
 
         input.addEventListener('keyup', (e) => {
-            if (e.keyCode === 13) {
-                let inputName = document.getElementById('inputName').value;
+            if (e.keyCode === 13) { // if enter key was pressed
+                let inputName = document.getElementById('inputName').value; // get the value of textbox
 
-                names.push(inputName);
+                names.push(inputName); // value will add to the array
 
-                var nval = "";
+                var nval = ""; // empty list
 
                 for (i = 0; i < names.length; i++) {
-                    nval += names[i] + "<br>";
+                    nval += names[i] + "<br>"; // listing all inserted value on array
                 }
 
-                document.getElementById('name').innerHTML = nval;
-                document.getElementById('inputName').value = "";
+                document.getElementById('name').innerHTML = nval; // prints the inserted values
+                document.getElementById('inputName').value = ""; // removed the value inserted on textbox
         }});
 
         function chooseName() {
-            let randomNumber = Math.floor(Math.random() * names.length);
-            let randomName = names[randomNumber];
+            let randomNumber = Math.floor(Math.random() * names.length); 
+
+            /* if we multiply the length of array to math.random, it returns a value not greater that
+             * the length of an array but with a decimal point, so the math.floor will manage to round a number 
+             * downward to its nearest integer.
+             * 
+             * for example, if math.random returns a value of 0.72 and multiply to the number of index (4 as an example),
+             * the result will be 2.88, decimal number doesn't accept on the index so we will using a floor function
+             * to round it off.
+            */
+
+            let randomName = names[randomNumber]; // the result of randomNumber will use as an index
 
             document.getElementById('selected').innerHTML = "Congrat <b>" + randomName + "</b>, you are the winner!";
 
-            var removeName = names.indexOf(randomName);
-            names.splice(removeName, 1);
+            var removeName = names.indexOf(randomName); 
+            
+            /*
+                string value will remove on the array once 
+                the array was chosen randomly
+            */
 
-            let updateName = "";
+            names.splice(removeName, 1); // value will remove by one
+
+            let updateName = ""; // updating the list
 
             for (i = 0; i < names.length; i++) {
                 updateName += names[i] + "<br>";
             }
 
-            document.getElementById('name').innerHTML = updateName;
+            document.getElementById('name').innerHTML = updateName; // prints the updated names
         }
 
         function resetName() {
